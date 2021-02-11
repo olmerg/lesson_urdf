@@ -18,7 +18,7 @@ root Link: world has 1 child(ren)
 
 This is an adaptation of an old example of ros industrial tutorial(before [docs](https://industrial-training-master.readthedocs.io/) ) about how to create and urdf files
 
-![](robotplanar.png)
+![](robotplanar.PNG)
 
 where, $l_1=l_2=0.5$ y $l_3=0.18$ 
 
