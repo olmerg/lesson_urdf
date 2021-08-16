@@ -32,9 +32,11 @@ To execute this package please add this to the .bashrc or to the specific consol
 echo "export LC_NUMERIC="en_US.UTF-8"" >> ~/.bashrc
 
 to test make
-``cd workspace``
-``colcon build``
-``ros2 launch lesson_urdf view_robot_launch.py``
+```
+cd workspace
+colcon build
+ros2 launch lesson_urdf view_robot_launch.py
+```
 
 
 
