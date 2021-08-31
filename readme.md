@@ -146,23 +146,22 @@ Steps to reproduce this repository:
     colcon build
 ```
 - add to path the workspace
+```
     . install/setup.bash
+```
+- run the launch file
+```
+ros2 launch lesson_urdf view_robot_launch.py
+```
 
 
 
 
-
+Some error could be:
 To execute this package please add this to the .bashrc or to the specific console ([Show basic URDF model in Rviz2](https://answers.ros.org/question/348984/show-basic-urdf-model-in-rviz2/) )
-
 
 echo "export LC_NUMERIC="en_US.UTF-8"" >> ~/.bashrc
 
-to test make
-```
-cd workspace
-colcon build
-ros2 launch lesson_urdf view_robot_launch.py
-```
 
 
 
