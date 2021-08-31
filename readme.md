@@ -33,8 +33,10 @@ The robot should be described through a tags, where the ***link*** represent the
 Steps to reproduce this repository:
 
 - [create a package](https://docs.ros.org/en/foxy/Tutorials/Creating-Your-First-ROS2-Package.html):
+```
     cd ~/utadeo_ws/src
     ros2 pkg create --build-type ament_python lesson_urdf
+```
 - Edit the files package.xml to add the next dependencies and your information about the package
 ```      
       <depend>urdf</depend>
@@ -44,17 +46,21 @@ Steps to reproduce this repository:
       <exec_depend>joint_state_publisher_gui</exec_depend>
 ``` 
 - make a folder urdf inside ~/utadeo_ws/src/lesson_urdf
+```
     cd ~/utadeo_ws/src/lesson_urdf
     mkdir urdf
     gedit planar_3dof.urdf
-
+```
 - Create the tag robot inside the file
-      
+```      
     <?xml version="1.0"?>
     <robot name="planar_3dof" xmlns:xacro="http://ros.org/wiki/xacro">
     </robot>
+ ```
 - create a link without geometry which is the world (inside tag ***robot***)
-    <link name="world" />
+ ```
+ <link name="world" />
+ ```
 - create a link **base_link** which describe the base of the robot of the figure. Note that this link has a ***visual*** tag which describe the ***geometry*** an ***material*** of the piece. It also contain another geometry which is the ***collision*** geometry which could describe a simplified geometry to check collision or other tasks. In this case we represent the base of the robot with a ***cylinder*** of length 0.1 and width 0.2. The cilynde ris created 
 ```  
   <link name="base_link">
@@ -78,11 +84,12 @@ Steps to reproduce this repository:
   </link>
 ```
 -  create a ***joint*** fixed to the world
-  <joint name="fixed" type="fixed">
+```
+<joint name="fixed" type="fixed">
     <parent link="world" />
     <child link="base_link" />
   </joint>
-  
+```  
  - now create the ***link*** link_1, but now the geometry will be an stl file inside the folder meshes of our project (lesson_urdf). Note that we also can add ***inertial*** propierties of the robot like center of mass and inertia matrix of each link. Also note that collision and visual geometry could be diferrent. Here the cylinder made to simplify the link has a length 0.5 and radius 0.05, but this geometry is created over z axis since -0.25, so in ***origin*** we rotate the figure in y 90 degrees(1.5708) and translate in x 0.25 to start in zero. 
 ```
     <link name="link_1">
@@ -107,7 +114,7 @@ Steps to reproduce this repository:
   </link>
  ```
 - now we create the ***joint*** with ***parent*** the base_link and ***child*** the link_1 of type *revolute*. Note that here the ***axis*** of rotation  is over z and the link_1 is translated 0.05 over z from the origin of the base_link.
-
+```
   <joint name="joint_1" type="revolute">
     <parent link="base_link" />
     <child link="link_1" />
@@ -115,6 +122,7 @@ Steps to reproduce this repository:
     <axis xyz="0 0 1" />
     <limit lower="-1.57" upper="1.57" effort="0" velocity="0.5" />
   </joint>
+```
 - Repetae the process for *link_2*, *gripper* and a link without geomtery *end* 
 ...
 
@@ -133,8 +141,10 @@ Steps to reproduce this repository:
   	('share/' + package_name+'/meshes/visual/', glob('meshes/visual/*')),
  ```
 - compile the workspace
+```
     cd ~/utadeo_ws
     colcon build
+```
 - add to path the workspace
     . install/setup.bash
 
