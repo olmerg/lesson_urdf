@@ -127,19 +127,20 @@ Steps to reproduce this repository:
 ...
 
 - save the file
-- now copy the meshes and launch folder (TODO [tutorial about launch](https://docs.ros.org/en/foxy/Tutorials/Launch-system.html))
+- now copy the meshes,rviz and launch folder (TODO [tutorial about launch](https://docs.ros.org/en/foxy/Tutorials/Launch-system.html))
 - configure in setup.py the files to be copy:
-    - Add the library at the biginning of the file
- ```
- from glob import glob
- ```  
-   - append these  lines inside data_files
-```
-    ('share/' + package_name, glob('launch/*.py')),
-  	('share/' + package_name, glob('urdf/*')),
-  	('share/' + package_name+'/meshes/collision/', glob('meshes/collision/*')),
-  	('share/' + package_name+'/meshes/visual/', glob('meshes/visual/*')),
- ```
+     - Add the library at the beginning of the file
+        ```
+        from glob import glob
+        ```  
+     - append these  lines inside data_files
+        ```
+            ('share/' + package_name, glob('launch/*.py')),
+  	        ('share/' + package_name+'/urdf/', glob('urdf/*')),
+            ('share/' + package_name+'/rviz/', glob('rviz/*')),
+  	        ('share/' + package_name+'/meshes/collision/', glob('meshes/collision/*')),
+  	        ('share/' + package_name+'/meshes/visual/', glob('meshes/visual/*')),
+        ```
 - compile the workspace
 ```
     cd ~/utadeo_ws
@@ -151,7 +152,7 @@ Steps to reproduce this repository:
 ```
 - run the launch file
 ```
-ros2 launch lesson_urdf view_robot_launch.py
+    ros2 launch lesson_urdf view_robot_launch.py
 ```
 
 
