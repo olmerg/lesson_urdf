@@ -1,0 +1,20 @@
+digraph G {
+node [shape=box];
+"world" [label="world"];
+"base_link" [label="base_link"];
+"link_1" [label="link_1"];
+"link_2" [label="link_2"];
+"gripper" [label="gripper"];
+"end" [label="end"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"world" -> "fixed" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"fixed" -> "base_link"
+"base_link" -> "joint_1" [label="xyz: 0 0 0.05 \nrpy: 0 -0 0"]
+"joint_1" -> "link_1"
+"link_1" -> "joint_2" [label="xyz: 0.5 0 0 \nrpy: 0 -0 0"]
+"joint_2" -> "link_2"
+"link_2" -> "joint_3" [label="xyz: 0.5 0 0 \nrpy: 0 -0 0"]
+"joint_3" -> "gripper"
+"gripper" -> "gripper_end" [label="xyz: 0.18 0 0 \nrpy: 0 -0 0"]
+"gripper_end" -> "end"
+}
