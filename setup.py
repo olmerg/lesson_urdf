@@ -5,7 +5,7 @@ package_name = 'lesson_urdf'
 
 setup(
     name=package_name,
-    version='0.0.0',
+    version='0.0.1',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -17,15 +17,16 @@ setup(
   	('share/' + package_name+'/meshes/collision/', glob('meshes/collision/*')),
   	('share/' + package_name+'/meshes/visual/', glob('meshes/visual/*')),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools','pyserial'],
     zip_safe=True,
-    maintainer='ros-industrial',
+    maintainer='Olmer Garcia',
     maintainer_email='olmer@gmail.com',
     description='TODO: Package description',
-    license='TODO: License declaration',
+    license='BSD',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'robot_serial_node = lesson_urdf.robot_serial_node:main',
         ],
     },
 )
