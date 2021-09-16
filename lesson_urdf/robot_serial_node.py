@@ -1,5 +1,11 @@
 # Copyright 2021 Utadeo
-#
+#OJO para funcionar el serial agregarlo a la maquina virtual y luego hacer una sola vez en consola
+
+# sudo usermod -a -G dialout ros-industrial
+# luego reiniciar la maquina virtual y revisar en consola>
+# groups
+#debe aparecer dialout
+
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -34,14 +40,14 @@ class RobotSerialNode(Node):
             1)
 
         try:
-            self.serial= serial.Serial(timeout=0.045,write_timeout=0.001)
+            self.serial= serial.Serial(timeout=0.045)
             self.serial.baudrate = 115200
             self.serial.port = '/dev/ttyACM0'
             self.serial.open()
             time.sleep(1)
         except:
             self.get_logger().warning('Error al abrir el puerto Serial, saliendo')
-            #quit()
+            quit()
 
         #TODO: adicionar parametros (configurar correctamente)
         self.t_s = 0.05  # seconds
@@ -50,7 +56,7 @@ class RobotSerialNode(Node):
         self.time_1=self.get_clock().now()
         self.q=[0,0,0,0,0,0]
         self.q_1=self.q
-        #self.serial.write(b'h')
+        self.serial.write(b'h')
 
     def move_serial(self,q_move):
         '''
@@ -88,7 +94,7 @@ class RobotSerialNode(Node):
                 self.q_1[i]=self.q[i]
             self.get_logger().info('moving: "%s"' % move)
             if(suma>0):
-                    None#self.move_serial(move)
+                    self.move_serial(move)
             
 
 
