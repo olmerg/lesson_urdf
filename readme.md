@@ -35,6 +35,7 @@ Steps to reproduce this repository:
 
 - [create a package](https://docs.ros.org/en/foxy/Tutorials/Creating-Your-First-ROS2-Package.html):
 ```
+    cd src
     ros2 pkg create --build-type ament_python lesson_urdf
 ```
 - Edit the files package.xml to add the next dependencies and your information about the package
