@@ -31,10 +31,10 @@ The full name of URDF (United Robotics Description Format) is a language format 
 The robot should be described through a tags, where the ***link*** represent the geometry of the robot and the ***joint*** represent the articulation or degree of fredoom of the robot. The tags are documented in [wiki ros](http://wiki.ros.org/urdf/XML), where can be find other tags like sensor or transmission  which let to describe this part of robot.
 
 Steps to reproduce this repository:
+- open a terminal inside the docker of [ros2_start](https://github.com/olmerg/ros2_start) or create a workspace.
 
 - [create a package](https://docs.ros.org/en/foxy/Tutorials/Creating-Your-First-ROS2-Package.html):
 ```
-    cd ~/utadeo_ws/src
     ros2 pkg create --build-type ament_python lesson_urdf
 ```
 - Edit the files package.xml to add the next dependencies and your information about the package
@@ -45,9 +45,9 @@ Steps to reproduce this repository:
       <exec_depend>robot_state_publisher</exec_depend>
       <exec_depend>joint_state_publisher_gui</exec_depend>
 ``` 
-- make a folder urdf inside ~/utadeo_ws/src/lesson_urdf
+- make a folder urdf inside package
 ```
-    cd ~/utadeo_ws/src/lesson_urdf
+    cd src/lesson_urdf
     mkdir urdf
     gedit planar_3dof.urdf
 ```
@@ -143,8 +143,7 @@ Steps to reproduce this repository:
         ```
 - compile the workspace
 ```
-    cd ~/utadeo_ws
-    colcon build
+    colcon build --symlink-install
 ```
 - add to path the workspace
 ```
